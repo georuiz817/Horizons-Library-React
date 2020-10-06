@@ -10,6 +10,7 @@ const Browse = (props) => {
 
   useEffect(() => {
     fetchCategoryData();
+    // eslint-disable-next-line
   }, []);
 
   async function fetchCategoryData() {
@@ -37,9 +38,9 @@ const Browse = (props) => {
     <Container>
       <Title>{category.charAt(0).toUpperCase() + category.slice(1)}</Title>
       {categoryArray.map((i) => (
-        <BrowserLink to=':name'>
+        <BrowserLink to={`/${category}/${i.id}`}>
           <CategoryCard>
-            <p key={i.id}>{i.name["name-USen"]}</p>
+            <p>{i.name["name-USen"]}</p>
           </CategoryCard>
         </BrowserLink>
       ))}

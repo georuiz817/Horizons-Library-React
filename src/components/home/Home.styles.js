@@ -17,8 +17,9 @@ export const CategoryLink = styled(Link)`
   display: block;
   margin-bottom: 2%;
   border: solid black thin;
-  width: 10%;
+  width: 30%;
   padding: 1%;
   text-decoration: none;
   border-radius: 15px;
+  font-size: 2rem;
 `;
