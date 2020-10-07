@@ -22,4 +22,5 @@ export const CategoryLink = styled(Link)`
   text-decoration: none;
   border-radius: 15px;
   font-size: 2rem;
+  color: black;
 `;

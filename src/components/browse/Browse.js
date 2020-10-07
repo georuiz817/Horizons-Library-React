@@ -4,6 +4,7 @@ import { Container, Title } from "../home/Home.styles";
 
 const Browse = (props) => {
   const [dataIndex, setDataIndex] = useState("");
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const { category } = props.match.params;
   let categoryArray = [...dataIndex];
@@ -30,6 +31,10 @@ const Browse = (props) => {
     }
   }
 
+  let filteredCategory = categoryArray.filter((i) => {
+    return i.name["name-USen"].indexOf(search) !== -1;
+  });
+
   return loading ? (
     <Container>
       <Title>loading...</Title>
@@ -37,13 +42,20 @@ const Browse = (props) => {
   ) : (
     <Container>
       <Title>{category.charAt(0).toUpperCase() + category.slice(1)}</Title>
-      {categoryArray.map((i) => (
-        <BrowserLink to={`/${category}/${i.id}`}>
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      {filteredCategory
+        .sort((a, b) => (a.name["name-USen"] > b.name["name-USen"] ? 1 : -1))
+        .map((i) => (
           <CategoryCard>
-            <p>{i.name["name-USen"]}</p>
+            <BrowserLink to={`/${category}/${i.id}`}>
+              <p>{i.name["name-USen"]}</p>
+            </BrowserLink>
           </CategoryCard>
-        </BrowserLink>
-      ))}
+        ))}
     </Container>
   );
 };

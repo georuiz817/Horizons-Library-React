@@ -16,6 +16,6 @@ export const CategoryCard = styled.div`
 
 export const BrowserLink = styled(Link)`
 text-decoration: none;
-
-`;
+color: black;
+`
  

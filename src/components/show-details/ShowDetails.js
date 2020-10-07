@@ -10,6 +10,7 @@ const ShowDetails = (props) => {
   const [name, setName] = useState(false);
   const { id } = props.match.params;
   const { category } = props.match.params;
+ 
 
   useEffect(() => {
     fetchViewObject();
@@ -40,13 +41,13 @@ const ShowDetails = (props) => {
     </Container>
   ) : (
     <Container>
-      {category === "fish" ? (
-        <FishShow viewObject={viewObject} name={name} />
+      {category === "fish" && viewObject !== '' ? (
+        <FishShow viewObject={viewObject} loading={loading} name={name} />
       ) : null}
-      {category === "villagers" ? (
+      {category === "villagers"  && viewObject !== '' ? (
         <VillagerShow viewObject={viewObject} name={name} />
       ) : null}
-      {category === "bugs" ? (
+      {category === "bugs"  && viewObject !== '' ? (
         <BugsShow viewObject={viewObject} name={name} />
       ) : null}
     </Container>
