@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import FishShow from "./FishShow";
-import VillagerShow from './VillagerShow'
-import BugsShow from './BugsShow'
+import VillagerShow from "./VillagerShow";
+import BugsShow from "./BugsShow";
 import { Container, Title } from "../home/Home.styles";
-
+ 
 const ShowDetails = (props) => {
   const [viewObject, setViewObject] = useState("");
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState(false);
   const { id } = props.match.params;
   const { category } = props.match.params;
- 
 
   useEffect(() => {
     fetchViewObject();
@@ -33,23 +32,24 @@ const ShowDetails = (props) => {
       setLoading(false);
     }
   }
-  console.log(viewObject);
 
+  const showContainer = () => {
+    if (category === "fish" && viewObject !== "") {
+      return <FishShow viewObject={viewObject} loading={loading} name={name} />;
+    } else if (category === "villagers" && viewObject !== "") {
+      return <VillagerShow viewObject={viewObject} name={name} />;
+    } else if (category === "bugs" && viewObject !== ""){
+      return <BugsShow viewObject={viewObject} name={name} />;
+    } else return null
+  };
+  
   return loading ? (
     <Container>
       <Title>loading..</Title>
     </Container>
   ) : (
     <Container>
-      {category === "fish" && viewObject !== '' ? (
-        <FishShow viewObject={viewObject} loading={loading} name={name} />
-      ) : null}
-      {category === "villagers"  && viewObject !== '' ? (
-        <VillagerShow viewObject={viewObject} name={name} />
-      ) : null}
-      {category === "bugs"  && viewObject !== '' ? (
-        <BugsShow viewObject={viewObject} name={name} />
-      ) : null}
+      {showContainer()}
     </Container>
   );
 };

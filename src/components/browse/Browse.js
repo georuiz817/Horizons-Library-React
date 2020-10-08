@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CategoryCard, BrowserLink } from "./browse.styles";
+import { CategoryCard, BrowserLink, BrowseFilter } from "./browse.styles";
 import { Container, Title } from "../home/Home.styles";
 
 const Browse = (props) => {
@@ -42,17 +42,18 @@ const Browse = (props) => {
   ) : (
     <Container>
       <Title>{category.charAt(0).toUpperCase() + category.slice(1)}</Title>
-      <input
+      <BrowseFilter
+        placeholder='Search'
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
       {filteredCategory
-        .sort((a, b) => (a.name["name-USen"] > b.name["name-USen"] ? 1 : -1))
+        .sort((a, b) => (a.name["name-USen"].toUpperCase() > b.name["name-USen"].toUpperCase() ? 1 : -1))
         .map((i) => (
           <CategoryCard>
             <BrowserLink to={`/${category}/${i.id}`}>
-              <p>{i.name["name-USen"]}</p>
+              <p>{i.name["name-USen"].charAt(0).toUpperCase() + i.name["name-USen"].slice(1)}</p>
             </BrowserLink>
           </CategoryCard>
         ))}

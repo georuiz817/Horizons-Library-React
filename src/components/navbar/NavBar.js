@@ -1,13 +1,10 @@
 import React from "react";
- 
+import { NavLink, NavContainer } from "../navbar/NavBar.styles";
 const NavBar = () => {
- 
   return (
-      <div>
-          <p>Home</p>
-          <p>Categories</p>
-          <p>About</p>
-      </div>
+    <NavContainer>
+      <NavLink to="/">🏠</NavLink>
+    </NavContainer>
   );
 };
 

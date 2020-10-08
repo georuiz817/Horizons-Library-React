@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-  margin: 10%;
+  margin: 5% 10% 10% 10%;
 `;
 
 export const Title = styled.h1`
@@ -23,4 +23,7 @@ export const CategoryLink = styled(Link)`
   border-radius: 15px;
   font-size: 2rem;
   color: black;
+  &:hover {
+    background-color: #2b9eb3;;
+
 `;
