@@ -11,6 +11,7 @@ export const Title = styled.h1`
 
 export const ButtonsContainer = styled.div`
   text-align: center;
+  margin-top: 5%;
 `;
 
 export const CategoryLink = styled(Link)`
